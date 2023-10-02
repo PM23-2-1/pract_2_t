@@ -10,25 +10,25 @@ import exel
 warnings.filterwarnings("ignore")
 
 def create_set():
-    seti = {i for i in range(20)}
-    db.save_result('set', seti)
+    seti = tuple(input('tuple: ').split())
+    db.save_result('tuple', seti)
 
 def get_i_set():
     seti = db.get_last_set()
     if seti is not None:
-        seti = {int(i) for i in db.get_last_set()[1:-1].split(', ')}
+        seti = tuple(str(i) for i in db.get_last_set()[1:-1].replace("'", '').split(', '))
         diction = {k:v for k, v in zip(range(len(seti)), seti)}
         db.save_result('dict', diction)
 
 def get_srez():
     seti = db.get_last_set()
     if seti is not None:
-        seti = [int(i) for i in db.get_last_set()[1:-1].split(', ')]
+        seti = tuple(str(i) for i in db.get_last_set()[1:-1].replace("'", '').split(', '))
         a, b = list(map(int, input('a, b: ').split()))
         db.save_result('srez', seti[max(0, a):min(len(seti), b)])
 
 def get_set():
-    seti = {int(i) for i in db.get_last_set()[1:-1].split(', ')}
+    seti = tuple(str(i) for i in db.get_last_set()[1:-1].replace("'", '').split(', '))
     print(seti)
 
 # main console menu

@@ -56,7 +56,7 @@ def get_last_set():
                                 database=DB_Names.db_names.get_name(),
                                 cursorclass=pymysql.cursors.DictCursor)
         cursor = conn.cursor()
-        cursor.execute("SELECT `result` FROM `" + DB_Names.db_names.get_name_table() + "` WHERE `operat` LIKE 'set' ORDER BY id DESC LIMIT 1")
+        cursor.execute("SELECT `result` FROM `" + DB_Names.db_names.get_name_table() + "` WHERE `operat` LIKE 'tuple' ORDER BY id DESC LIMIT 1")
         return cursor.fetchall()[-1]['result']
     except pymysql.err.DataError as e:
         print('Ошибка с данными:', e)

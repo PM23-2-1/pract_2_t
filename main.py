@@ -18,6 +18,7 @@ def get_i_set():
     if seti is not None:
         seti = tuple(str(i) for i in db.get_last_set()[1:-1].replace("'", '').split(', '))
         diction = {k:v for k, v in zip(range(len(seti)), seti)}
+        print(diction)
         db.save_result('dict', diction)
 
 def get_srez():
